@@ -22,7 +22,9 @@
 
       <dt>Image</dt>
       <!-- Display image start -->
-      <dd><%= favorite.image %></dd>
+      <dd>
+        <%= cl_image_tag @favorite.image, class: "img-fluid" %>
+      </dd>
       <!-- Display image end -->
 
       <dt>User</dt>
