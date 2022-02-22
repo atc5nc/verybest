@@ -8,6 +8,10 @@ class Dish < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :venues,
+             :through => :favorites,
+             :source => :venue
+
   has_many   :users,
              :through => :favorites,
              :source => :user
