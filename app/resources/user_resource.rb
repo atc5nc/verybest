@@ -12,4 +12,18 @@ class UserResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :venues do
+    assign_each do |user, venues|
+      venues.select do |v|
+        v.id.in?(user.venues.map(&:id))
+      end
+    end
+  end
+
+
+  filter :venue_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:venues).where(:favorites => {:venue_id => value})
+    end
+  end
 end
