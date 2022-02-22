@@ -12,6 +12,8 @@ class UserResource < ApplicationResource
 
   # Indirect associations
 
+  many_to_many :dishes
+
   has_many :venues do
     assign_each do |user, venues|
       venues.select do |v|
