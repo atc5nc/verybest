@@ -8,7 +8,7 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
-  has_many   :favorites
+  has_many :favorites
 
   # Indirect associations
 
@@ -22,10 +22,9 @@ class UserResource < ApplicationResource
     end
   end
 
-
   filter :venue_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:venues).where(:favorites => {:venue_id => value})
+      scope.eager_load(:venues).where(favorites: { venue_id: value })
     end
   end
 end

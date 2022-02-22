@@ -18,5 +18,4 @@ class Favorite < ApplicationRecord
   def to_s
     dish.to_s
   end
-
 end
